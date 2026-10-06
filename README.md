@@ -7,13 +7,20 @@
 [源码仓库](https://github.com/yujinchuan2021-max/zhenxing-hardware-editor) ·
 [v0.1.0 下载与校验文件](https://github.com/yujinchuan2021-max/zhenxing-hardware-editor/releases/tag/v0.1.0)
 
-下载 `ZhenxingHardwareEditor-0.1.0-win-x64.zip` 与对应 `.zip.sha256`，
+本轮修订使用 [ZhenxingHardwareEditor-0.1.0-win-x64-20261006-fix1.zip](https://github.com/yujinchuan2021-max/zhenxing-hardware-editor/releases/download/v0.1.0/ZhenxingHardwareEditor-0.1.0-win-x64-20261006-fix1.zip)
+与对应 [SHA-256 校验文件](https://github.com/yujinchuan2021-max/zhenxing-hardware-editor/releases/download/v0.1.0/ZhenxingHardwareEditor-0.1.0-win-x64-20261006-fix1.zip.sha256)，
+实际下载附件及上传状态以 [v0.1.0 发布页](https://github.com/yujinchuan2021-max/zhenxing-hardware-editor/releases/tag/v0.1.0) 为准。
 解压整个目录后使用。首发说明见 [v0.1.0](docs/releases/v0.1.0.md)。
+
+本轮仍使用 0.1.0 版本号，属于同版本修订；原 `v0.1.0` 标签、首发包和首发说明保留。
+修订包文件名为 `ZhenxingHardwareEditor-0.1.0-win-x64-20261006-fix1.zip` 与对应
+`.zip.sha256`，构建与发布状态见 [本轮修订说明](docs/releases/v0.1.0-revision-20261006-fix1.md)。
 
 ## 界面示例
 
 以下为共享编辑界面的合成演示数据，用于展示型号库、六类硬件卡片和主题。
 独立版顶栏显示产品名称、版本与主题入口，截图中的设备与名称属于测试演示数据。
+截图来自共享页面的隔离原生 UI 演示；未启动独立管理员应用，也未写入真实设备名称。
 
 浅色主题：
 
@@ -25,18 +32,24 @@
 
 ## 支持范围
 
+本地展示配置只用于本页的编辑和预览，其他软件不会套用此配置。界面分别显示
+保存目标与“当前 Windows 名称”；后者是本次设备读取得到的值。目标已经保存，
+不代表已经同步到 Windows。独立版提供配置编辑与预览，没有硬件盘点页。
+
 | 类别 | 修改范围 |
 | --- | --- |
-| CPU | 本地展示配置；可同步 Windows 注册表中的处理器显示名称 |
-| 主板 | 本地展示配置；可同步 Windows 注册表中的主板产品名称和厂商显示字段 |
-| 显卡 | 本地展示配置；可同步所选设备的 Windows 友好名称 |
-| 内存 | **仅保存在本工具的本地展示配置中**；不修改内存 SPD、固件或 WMI 型号 |
-| 显示器 | 本地展示配置；可同步所选设备的 Windows 友好名称 |
-| 硬盘 | 本地展示配置；可同步所选设备的 Windows 友好名称 |
+| CPU | 本页配置与预览；可同步单处理器所有逻辑核心的 Windows 注册表名称字符串。展示厂商仅本地保存；多处理器或拓扑未知时仅支持本地配置 |
+| 主板 | 本页配置与预览；可同步 Windows 注册表中的主板名称和厂商显示字符串 |
+| 显卡 | 本页配置与预览；只同步选中设备的 Windows PnP `FriendlyName`（设备管理器友好名称），展示厂商仅本地保存 |
+| 内存 | **仅本页配置与预览**；不修改 SMBIOS 型号、SPD、固件或 WMI 型号 |
+| 显示器 | 本页配置与预览；只同步选中设备的 Windows PnP `FriendlyName`，展示厂商仅本地保存 |
+| 硬盘 | 本页配置与预览；只同步选中设备的 Windows PnP `FriendlyName`，展示厂商仅本地保存 |
 
-修改对象是名称，实际硬件、容量、频率与性能不会改变。固件、WMI 和检测软件可能
-继续显示真实型号；重启或驱动更新也可能重置 Windows 名称。多设备按设备标识选择。
-未检测到的类别可保存为本地展示配置，不会写入系统。
+修改对象是名称，实际硬件、容量、频率与性能不会改变。使用相应 Windows 字段的
+其他软件可能显示别名；从 CPUID、固件、驱动、EDID 或磁盘控制器读取的检测软件，
+重新扫描后也可能继续显示真实型号。系统同步成功只表示受支持名称字段的回读校验
+通过，不表示第三方检测软件已经显示目标名称。重启或驱动更新可能重置 Windows 名称。
+多设备按设备标识选择；未检测到的类别仅保存本地配置，不会写入系统。
 
 内置 96 个真实型号/产品系列，包含 Intel、AMD、NVIDIA、ASUS、MSI、GIGABYTE、
 ASRock、Kingston、CORSAIR、G.SKILL、Crucial、LG、Samsung、Dell、BenQ、AOC、
@@ -48,8 +61,10 @@ SanDisk WD_BLACK 和 Seagate。官方资料核对日期：2026-10-06。
 
 1. 解压完整便携包，运行 `ZhenxingHardwareEditor.exe`。系统会请求管理员权限。
 2. 选择硬件类别和具体设备，通过品牌/型号搜索或直接填写目标名称。
-3. 查看展示配置预览，点击“应用修改”。勾选“同步 Windows 显示名称”时，先备份
-   受支持的系统原始字段，然后进行写入和回读校验。取消勾选可只保存本地配置。
+3. 查看展示配置预览，点击“保存展示名称”。勾选“同时同步支持的 Windows 名称字段”时，
+   先保存本地配置，再备份系统原值、写入受支持字段并回读校验。取消勾选只保存本页配置。
+   保存后查看各项结果及“当前 Windows 名称”，判断系统名称是否同步；需要检查其他
+   检测软件时重新扫描，扫描后仍可能显示真实硬件。
 4. 使用“一键恢复”还原备份字段。恢复失败项保留备份，便于重新连接设备后重试。
 
 取消同步仅保存本地展示配置，不写入 Windows 名称；当前独立版启动时仍会请求

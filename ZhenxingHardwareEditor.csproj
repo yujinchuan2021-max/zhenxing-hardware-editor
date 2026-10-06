@@ -35,7 +35,7 @@
     <PackageReference Include="System.Management" Version="10.0.8" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LICENSE;NOTICE;README.md;docs\releases\v0.1.0.md">
+    <Content Include="LICENSE;NOTICE;README.md;docs\releases\*.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
