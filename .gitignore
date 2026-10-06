@@ -1,0 +1,11 @@
+bin/
+obj/
+artifacts/
+publish/
+tests/bin/
+tests/obj/
+.vs/
+*.user
+*.suo
+*.zip
+TestResults/

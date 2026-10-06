@@ -1,0 +1,14 @@
+枕星配置修改器 — 来源与署名
+
+本项目将枕星图吧AI助手的配置修改器整理为独立的 Windows WinUI 3 / .NET 10 应用。
+来源项目：https://github.com/yujinchuan2021-max/zhenxing-ai-assistant
+上游图吧工具箱 CE / TubaWinUi3：https://github.com/luolangaga/tubatools
+上游维护者：luolangaga 及该项目贡献者。
+枕星版维护者：yujinchuan2021-max 及枕星图吧AI助手贡献者。
+保留来源文件中的作者、版权与许可证信息。
+
+项目自身源码按 LICENSE 所载 GNU General Public License v3.0 发布。
+.NET、Microsoft Windows App SDK、Windows SDK BuildTools、System.Management 及其依赖
+保留各自许可证；本声明不改变独立运行时或第三方依赖的许可。
+
+型号名称、品牌及官方参考网页的权利属于相应厂商。本项目与这些硬件厂商无隶属关系。
